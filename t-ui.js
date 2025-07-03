@@ -826,7 +826,7 @@ window.TUtils = window.TUtils || {};
     }
 
     window.TUtils.UI = {
-        runAttackSender,
+        configureUI,
         builderHTML,
         buttonToggle
     }
