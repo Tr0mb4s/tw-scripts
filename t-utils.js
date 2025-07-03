@@ -397,6 +397,8 @@ const defaultSettings = {
 
         //Locks
         acquireAlertLock,   // Expose new lock functions
-        releaseAlertLock
+        releaseAlertLock,
+        CAPTCHA_ALERT_LOCK_KEY,   // Expose these constants
+        INCOMING_ALERT_LOCK_KEY
     }
 })();
