@@ -3,6 +3,7 @@
 // @author       Tr0mb4s
 // @version      2.2.0
 // @description  Main entry point for T. Utilities suite
+// @icon         https://i.ibb.co/ZRBC9VsX/T-notifications.png
 // @match        *://*.tribalwars.com.*/*
 // @require      t-utils.js
 // @require      t-alerts.js
