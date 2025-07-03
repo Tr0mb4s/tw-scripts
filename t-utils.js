@@ -3,6 +3,9 @@
 // @description  Common utilities and localStorage helpers for T. Utilities
 // ==/UserScript==
 
+// Ensure window.TUtils exists before trying to add properties to it
+window.TUtils = window.TUtils || {};
+
 const LOCAL_STORAGE_KEY = "t-utilities-settings-" + game_data.world;
 
 // New constants for alert-specific locks
