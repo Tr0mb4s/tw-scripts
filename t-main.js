@@ -85,7 +85,7 @@ window.TUtils = window.TUtils || {};
         const { checkForCaptchaAndAlert, checkForIncomingAndAlert } = window.TUtils.Alert || {};
         const { runAttackSender } = window.TUtils.Attack || {};
         const { builderUserInterface } = window.TUtils.Builder || {}; // Assuming this function is in t-builder.js
-        const { configureUI } = window.TUtils.UI || {};
+        const { configureUI } = window.TUtils.TUi || {};
 
         // --- UI Configuration (run after DOM is ready if it manipulates it) ---
         // It's generally good practice to run UI modifications after DOM is ready.

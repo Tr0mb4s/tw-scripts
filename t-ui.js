@@ -825,7 +825,7 @@ window.TUtils = window.TUtils || {};
         }).join("");
     }
 
-    window.TUtils.UI = {
+    window.TUtils.TUi = {
         configureUI,
         builderHTML,
         buttonToggle

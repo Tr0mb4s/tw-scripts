@@ -67,12 +67,10 @@ window.TUtils = window.TUtils || {};
     } = window.TUtils.Utils;
 
     const {
-        //UI
+        configureUI,
         builderHTML,
-
-        //Buttons
         buttonToggle
-    } = window.TUtils.UI;
+    } = window.TUtils.TUi;
 
     function processTemplate() {
         let template = document.getElementById("custom--builder-template").value;
