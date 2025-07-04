@@ -30,10 +30,10 @@ window.TUtils = window.TUtils || {};
     // 2. All other component scripts can load in parallel.
     const coreUtilsScript = 't-utils.js';
     const componentScripts = [
+        't-ui.js',
         't-alerts.js',
         't-attack.js',
         't-builder.js',
-        't-ui.js'
         // Add new modules here (e.g., 't-recruiter.js')
         // The order of these in 'componentScripts' does not strictly matter
         // as they are loaded in parallel via $.when.
