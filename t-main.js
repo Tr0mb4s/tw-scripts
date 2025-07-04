@@ -95,7 +95,7 @@ window.TUtils = window.TUtils || {};
             if (typeof configureUI === 'function') {
                 configureUI();
             } else {
-                console.warn("T.Utils.UI.configureUI not found. UI module might not be loaded correctly.");
+                console.warn("T.Utils.TUi.configureUI not found. UI module might not be loaded correctly.");
             }
 
             if (typeof builderUserInterface === 'function') {
