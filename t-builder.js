@@ -3,31 +3,35 @@
 // @description  Auto Builds a village according to a given template
 // ==/UserScript==
 
-const BUILDINGS = {
-    "main": "20",
-    "barracks": "25",
-    "stable": "20",
-    "garage": "15",
-    "church": "3",
-    "church_f": "20",
-    "watchtower": "0",
-    "snob": "1",
-    "smith": "20",
-    "place": "1",
-    "statue": "1",
-    "market": "25",
-    "wood": "30",
-    "stone": "30",
-    "iron": "30",
-    "farm": "30",
-    "storage": "30",
-    "hide": "1",
-    "wall": "1"
-}
 
-window.TUtils = window.TUtils || {};
 
 (() => {
+
+    window.TUtils = window.TUtils || {};
+    window.TUtils.Builder = window.TUtils.Builder || {};
+
+    const BUILDINGS = {
+        "main": "20",
+        "barracks": "25",
+        "stable": "20",
+        "garage": "15",
+        "church": "3",
+        "church_f": "20",
+        "watchtower": "0",
+        "snob": "1",
+        "smith": "20",
+        "place": "1",
+        "statue": "1",
+        "market": "25",
+        "wood": "30",
+        "stone": "30",
+        "iron": "30",
+        "farm": "30",
+        "storage": "30",
+        "hide": "1",
+        "wall": "1"
+    }
+
 
     const {
 

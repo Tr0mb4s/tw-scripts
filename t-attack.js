@@ -2,9 +2,14 @@
 // @name         T. Utilities - Attack Sender
 // @description  Handles attack sending and logging logic
 // ==/UserScript==
-window.TUtils = window.TUtils || {};
 
 (() => {
+
+    /**
+     * VARIABLES
+     */
+    window.TUtils = window.Alert || {};
+    window.TUtils.Builder = window.TUtils.Attack || {};
 
     const {
         //Utils

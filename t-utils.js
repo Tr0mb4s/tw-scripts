@@ -3,141 +3,145 @@
 // @description  Common utilities and localStorage helpers for T. Utilities
 // ==/UserScript==
 
-// Ensure window.TUtils exists before trying to add properties to it
-window.TUtils = window.TUtils || {};
-
-const LOCAL_STORAGE_KEY = "t-utilities-settings-" + game_data.world;
-
-// New constants for alert-specific locks
-const CAPTCHA_ALERT_LOCK_KEY = 't-utilities-lock-captcha-alert';
-const INCOMING_ALERT_LOCK_KEY = 't-utilities-lock-incoming-alert';
-const ALERT_LOCK_GRANULARITY = 500; // milliseconds - A very short TTL/granularity for the alert-sending lock
-
-
-
-/**
- * DATA STRUCTURES
- */
-
-
-const TROOP_ICONS = {
-    spear: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_spear.webp',
-    sword: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_sword.webp',
-    axe: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_axe.webp',
-    spy: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_spy.webp',
-    light: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_light.webp',
-    heavy: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_heavy.webp',
-    ram: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_ram.webp',
-    catapult: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_catapult.webp'
-};
-
-const alertSettings = {
-    captcha: {
-        enabled: true,
-        whatsappEnabled: false,
-        discordWebhookEnabled: false,
-        discordDMEnabled: false,
-        alertCooldown: 60,
-        lastAlertTime: 0
-    },
-    incoming: {
-        enabled: true,
-        whatsappEnabled: false,
-        discordWebhookEnabled: false,
-        discordDMEnabled: false,
-        alertCooldown: 15,
-        lastAlertTime: 0
-    },
-    whatsappEnabled: false,
-    discordWebhookEnabled: false,
-    discordDMEnabled: false,
-    phoneNumber: "",
-    apiKey: "",
-    webHook: "",
-    discordUserId: "",
-    checkerRefresh: 10,
-    incomingAttacks: 0
-};
-
-const defaultTroopTemplate = {
-    name: "Default",
-    troops: {
-        spear: 35,
-        sword: 0,
-        axe: 0,
-        arc: 0,
-        spy: 20,
-        light: 0,
-        harc: 0,
-        heavy: 0,
-        ram: 0,
-        catapult: 5
-    }
-}
-
-const attackSettings = {
-    enabled: false,
-    attackTime: 1200,
-    switchTime: 3000,
-    attackDelay: 500,
-    switchDelay: 200,
-    attackPerVillage: 1,
-    attacksPerSource: 1,
-    maxRetriesPerVillage: 1,
-    sendFulls: true,
-    checkDate: false,
-    minDate: "2025-16-13T16:00",
-    maxDate: new Date().toISOString(),
-    selectedTemplate: defaultTroopTemplate,
-    userTemplates: [defaultTroopTemplate],
-    coords: "500|500"
-}
-
-const attackerSettings = {
-    attackIndex: 0,
-    currentIndexAttempt: 0,
-    retryCount: 0
-}
-
-const attackLog = {
-    time: new Date().toISOString(),
-    from: "123|456",
-    to: "234|678",
-    success: true,
-    description: "description"
-};
-
-const builderSettings = {
-    enabled: false,
-    builderDelay: 1200,
-    builderRandomizerDelay: 500,
-    switchDelay: 3000,
-    switchRandomizerDelay: 200,
-    userVillageTemplates: [],
-    defaultTemplate: null,
-    villageTemplates: new Map()
-}
-
-const recruiterSettings = {
-    enabled: false,
-    recruiterDelay: 1200,
-    recruiterRandomizerDelay: 500,
-    switchDelay: 3000,
-    switchRandomizerDelay: 200,
-    villageTemplates: new Map()
-}
-
-const defaultSettings = {
-    alertSettings,
-    attackSettings,
-    attackerSettings,
-    builderSettings,
-    recruiterSettings,
-    attackLogs: []
-};
-
-
 (() => {
+
+    /**
+     * VARIABLES
+     */
+
+
+    // Ensure window.TUtils exists before trying to add properties to it
+    window.TUtils = window.TUtils || {};
+    window.TUtils.TUi = window.TUtils.TUi || {}; // Define the TUi object
+
+    const LOCAL_STORAGE_KEY = "t-utilities-settings-" + game_data.world;
+
+    // New constants for alert-specific locks
+    const CAPTCHA_ALERT_LOCK_KEY = 't-utilities-lock-captcha-alert';
+    const INCOMING_ALERT_LOCK_KEY = 't-utilities-lock-incoming-alert';
+    const ALERT_LOCK_GRANULARITY = 500; // milliseconds - A very short TTL/granularity for the alert-sending lock
+
+
+    /**
+     * DATA STRUCTURES
+     */
+
+
+    const TROOP_ICONS = {
+        spear: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_spear.webp',
+        sword: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_sword.webp',
+        axe: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_axe.webp',
+        spy: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_spy.webp',
+        light: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_light.webp',
+        heavy: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_heavy.webp',
+        ram: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_ram.webp',
+        catapult: 'https://dspt.innogamescdn.com/asset/340473d2/graphic/unit/unit_catapult.webp'
+    };
+
+    const alertSettings = {
+        captcha: {
+            enabled: true,
+            whatsappEnabled: false,
+            discordWebhookEnabled: false,
+            discordDMEnabled: false,
+            alertCooldown: 60,
+            lastAlertTime: 0
+        },
+        incoming: {
+            enabled: true,
+            whatsappEnabled: false,
+            discordWebhookEnabled: false,
+            discordDMEnabled: false,
+            alertCooldown: 15,
+            lastAlertTime: 0
+        },
+        whatsappEnabled: false,
+        discordWebhookEnabled: false,
+        discordDMEnabled: false,
+        phoneNumber: "",
+        apiKey: "",
+        webHook: "",
+        discordUserId: "",
+        checkerRefresh: 10,
+        incomingAttacks: 0
+    };
+
+    const defaultTroopTemplate = {
+        name: "Default",
+        troops: {
+            spear: 35,
+            sword: 0,
+            axe: 0,
+            arc: 0,
+            spy: 20,
+            light: 0,
+            harc: 0,
+            heavy: 0,
+            ram: 0,
+            catapult: 5
+        }
+    }
+
+    const attackSettings = {
+        enabled: false,
+        attackTime: 1200,
+        switchTime: 3000,
+        attackDelay: 500,
+        switchDelay: 200,
+        attackPerVillage: 1,
+        attacksPerSource: 1,
+        maxRetriesPerVillage: 1,
+        sendFulls: true,
+        checkDate: false,
+        minDate: "2025-16-13T16:00",
+        maxDate: new Date().toISOString(),
+        selectedTemplate: defaultTroopTemplate,
+        userTemplates: [defaultTroopTemplate],
+        coords: "500|500"
+    }
+
+    const attackerSettings = {
+        attackIndex: 0,
+        currentIndexAttempt: 0,
+        retryCount: 0
+    }
+
+    const attackLog = {
+        time: new Date().toISOString(),
+        from: "123|456",
+        to: "234|678",
+        success: true,
+        description: "description"
+    };
+
+    const builderSettings = {
+        enabled: false,
+        builderDelay: 1200,
+        builderRandomizerDelay: 500,
+        switchDelay: 3000,
+        switchRandomizerDelay: 200,
+        userVillageTemplates: [],
+        defaultTemplate: null,
+        villageTemplates: new Map()
+    }
+
+    const recruiterSettings = {
+        enabled: false,
+        recruiterDelay: 1200,
+        recruiterRandomizerDelay: 500,
+        switchDelay: 3000,
+        switchRandomizerDelay: 200,
+        villageTemplates: new Map()
+    }
+
+    const defaultSettings = {
+        alertSettings,
+        attackSettings,
+        attackerSettings,
+        builderSettings,
+        recruiterSettings,
+        attackLogs: []
+    };
 
 
     /**

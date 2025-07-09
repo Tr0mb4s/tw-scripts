@@ -5,9 +5,14 @@
 // @description  UI Panel for alert/attack configuration
 // @grant        none
 // ==/UserScript==
-window.TUtils = window.TUtils || {};
 
 (() => {
+
+    /**
+     * VARIABLES
+     */
+    window.TUtils = window.TUtils || {};
+    window.TUtils.Builder = window.TUtils.TUi || {};
 
     const {
 

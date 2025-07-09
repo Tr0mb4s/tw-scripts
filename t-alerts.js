@@ -3,10 +3,18 @@
 // @description  Handles alert logic for Captcha and Incoming Attacks
 // ==/UserScript==
 
-const channel = new BroadcastChannel('alert-sync');
+
 
 
 (() => {
+
+    /**
+     * VARIABLES
+     */
+    window.TUtils = window.Alert || {};
+    window.TUtils.Builder = window.TUtils.TUi || {};
+    
+    const channel = new BroadcastChannel('alert-sync');
 
     const {
         //Utils
