@@ -16,6 +16,7 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
      * VARIABLES
      */
     const {
+        TROOP_ICONS,
 
         //Utils
         switchVillage,

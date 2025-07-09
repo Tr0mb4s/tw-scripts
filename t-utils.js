@@ -369,6 +369,7 @@ window.TUtils.Utils = window.TUtils.Utils || {};
 
 
     window.TUtils.Utils = {
+        TROOP_ICONS,
 
         //Utils
         switchVillage,
