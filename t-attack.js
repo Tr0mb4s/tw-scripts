@@ -3,14 +3,15 @@
 // @description  Handles attack sending and logging logic
 // ==/UserScript==
 
+window.TUtils = window.TUtils || {}; // Ensure window.TUtils exists
+window.TUtils.Attack = window.TUtils.Attack || {}; // Ensure window.TUtils.Attack is an object
+
+
 (() => {
 
     /**
      * VARIABLES
      */
-    window.TUtils = window.Alert || {};
-    window.TUtils.Builder = window.TUtils.Attack || {};
-
     const {
         //Utils
         switchVillage,

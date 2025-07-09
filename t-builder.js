@@ -4,11 +4,11 @@
 // ==/UserScript==
 
 
+window.TUtils = window.TUtils || {}; // Ensure window.TUtils exists
+window.TUtils.Builder = window.TUtils.Builder || {}; // Ensure window.TUtils.Builder is an object
+
 
 (() => {
-
-    window.TUtils = window.TUtils || {};
-    window.TUtils.Builder = window.TUtils.Builder || {};
 
     const BUILDINGS = {
         "main": "20",

@@ -3,17 +3,18 @@
 // @description  Common utilities and localStorage helpers for T. Utilities
 // ==/UserScript==
 
+// Ensure window.TUtils exists before trying to add properties to it
+window.TUtils = window.TUtils || {};
+
+// Initialize window.TUtils.Utils immediately if it doesn't exist.
+// This ensures the object exists when other scripts reference it.
+window.TUtils.Utils = window.TUtils.Utils || {};
+
 (() => {
 
     /**
      * VARIABLES
      */
-
-
-    // Ensure window.TUtils exists before trying to add properties to it
-    window.TUtils = window.TUtils || {};
-    window.TUtils.TUi = window.TUtils.TUi || {}; // Define the TUi object
-
     const LOCAL_STORAGE_KEY = "t-utilities-settings-" + game_data.world;
 
     // New constants for alert-specific locks

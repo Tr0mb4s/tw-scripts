@@ -5,15 +5,16 @@
 
 
 
+// Ensure window.TUtils exists and its sub-objects are initialized
+window.TUtils = window.TUtils || {};
+window.TUtils.Alert = window.TUtils.Alert || {}; // Ensure TUtils.Alert is an object
+
 
 (() => {
 
     /**
      * VARIABLES
      */
-    window.TUtils = window.Alert || {};
-    window.TUtils.Builder = window.TUtils.TUi || {};
-    
     const channel = new BroadcastChannel('alert-sync');
 
     const {

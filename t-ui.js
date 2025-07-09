@@ -6,14 +6,15 @@
 // @grant        none
 // ==/UserScript==
 
+window.TUtils = window.TUtils || {}; // Ensure window.TUtils exists
+window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an object
+
+
 (() => {
 
     /**
      * VARIABLES
      */
-    window.TUtils = window.TUtils || {};
-    window.TUtils.Builder = window.TUtils.TUi || {};
-
     const {
 
         //Utils
