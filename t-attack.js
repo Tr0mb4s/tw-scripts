@@ -48,6 +48,13 @@ window.TUtils.Attack = window.TUtils.Attack || {}; // Ensure window.TUtils.Attac
         refreshLeaderLock
     } = window.TUtils.Utils;
 
+    const {
+        configureUI,
+        builderHTML,
+        buttonToggle,
+        attackToggler
+    } = window.TUtils.TUi;
+
     function runAttackSender() {
         const settings = getSettings();
         const isPlaceScreen = location.href.includes("screen=place");
@@ -101,7 +108,7 @@ window.TUtils.Attack = window.TUtils.Attack || {}; // Ensure window.TUtils.Attac
         const attackIndexMultiplied = attackIndex * 8;
         const coords = attackSettings.coords.slice(attackIndexMultiplied, attackIndexMultiplied + 8);
         const form = $('form').first();
-    
+
         sendAttack(form, coords, attackIndex, attackSettings, attackerSettings);
     }
 
@@ -149,7 +156,7 @@ window.TUtils.Attack = window.TUtils.Attack || {}; // Ensure window.TUtils.Attac
     async function fillCoordinates(coords) {
         console.log("Setting coords: " + coords)
         let coordInput = $("#place_target").find("input");
-    
+
         coordInput.focus();
         await sleep(200);
         const nativeInput = coordInput[0];
@@ -158,7 +165,7 @@ window.TUtils.Attack = window.TUtils.Attack || {}; // Ensure window.TUtils.Attac
         await sleep(200);
         $(".village-item").click();
     }
-    
+
 
     function fillTroops(form, troopConfig) {
         for (const [unit, amount] of Object.entries(troopConfig)) {
@@ -244,31 +251,20 @@ window.TUtils.Attack = window.TUtils.Attack || {}; // Ensure window.TUtils.Attac
         return $('h2:contains("Rally point")').length > 0 || $('h2:contains("Praça de Reuniões")').length > 0;
     }
 
-    function attackToggler() {
-        document.getElementById("attack-toggle").onclick = () => {
-            const attackSettings = getAttackSettings();
-            attackSettings.enabled = !attackSettings.enabled;
-            setAttackSettings(attackSettings);
-            const btn = $("#attack-toggle")[0];
-            btn.textContent = attackSettings.enabled ? '🛑 Stop' : '▶️ Start';
-            btn.classList.toggle("btn-confirm-yes", attackSettings.enabled);
-        };
-    }
-
     function addAttackLogs(attackLog) {
 
         console.log("Adding to logs")
         attackLog.description = attackLog.success
             ? `Attack from ${attackLog.from} to ${attackLog.to} succeeded.`
             : `Attack from ${attackLog.from} to ${attackLog.to} failed.`;
-    
+
         const logs = getAttackLogs() || [];
-    
+
         const recent = logs[logs.length - 1];
         if (recent && recent.from === attackLog.from && recent.to === attackLog.to && Math.abs(new Date(recent.time) - new Date(attackLog.time)) < 1000) {
             return;
         }
-    
+
         logs.push(attackLog);
         setAttackLogs(logs);
     }
@@ -278,22 +274,22 @@ window.TUtils.Attack = window.TUtils.Attack || {}; // Ensure window.TUtils.Attac
             setAttackIndex(attackerSettings.attackIndex + 1);
         }
     }
-    
+
     function getAttackIndex() {
         return getAttackerSettings().attackIndex;
     }
-    
+
     function setAttackIndex(index) {
         let attackerSettings = getAttackerSettings();
         attackerSettings.attackIndex = index;
         setAttackerSettings(attackerSettings);
     }
-    
+
 
     function getRetryCount() {
         return getAttackerSettings().retryCount;
     }
-    
+
     function setRetryCount(count) {
         let attackerSettings = getAttackerSettings();
         attackerSettings.retryCount = count;

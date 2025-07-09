@@ -809,6 +809,17 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
         $("#allAlertConfigurations").val(JSON.stringify(getSettings(), null, 4));
     }
 
+        function attackToggler() {
+        document.getElementById("attack-toggle").onclick = () => {
+            const attackSettings = getAttackSettings();
+            attackSettings.enabled = !attackSettings.enabled;
+            setAttackSettings(attackSettings);
+            const btn = $("#attack-toggle")[0];
+            btn.textContent = buttonToggle(attackSettings.enabled);
+            btn.classList.toggle("btn-confirm-yes", attackSettings.enabled);
+        };
+    }
+
 
     /**
      * BUTTONS
@@ -835,6 +846,7 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
     window.TUtils.TUi = {
         configureUI,
         builderHTML,
-        buttonToggle
+        buttonToggle,
+        attackToggler
     }
 })();
