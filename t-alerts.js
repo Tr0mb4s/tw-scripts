@@ -16,6 +16,8 @@ window.TUtils.Alert = window.TUtils.Alert || {}; // Ensure TUtils.Alert is an ob
      * VARIABLES
      */
     const channel = new BroadcastChannel('alert-sync');
+    const CAPTCHA_TRIGGERED = "CAPTCHA_TRIGGERED";
+    const INCOMING_TRIGGERED = "INCOMING_TRIGGERED";
 
     const {
         //Utils
