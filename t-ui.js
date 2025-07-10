@@ -619,7 +619,6 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
                         <img class="widget-button" onclick="return VillageOverview.toggleWidget( 'show_tbuilder_settings', this );" src="graphic/minus.png">		T. Builder
                     </h4>
                     <div class="widget_content" style="display: block;" bis_skin_checked="1">
-                    <form method="post">
                         <table width="100%">
                             <tbody>
                                 <tr>
@@ -629,10 +628,7 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
                                 </tr>
                             </tbody>
                         </table>
-                    </form>
-                    <script>
-                        VillageOverview.registerAMWidgetEvents();
-                    </script></div>
+                    </div>
                 </div>`
     }
 
