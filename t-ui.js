@@ -648,12 +648,12 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
                             <tbody>
                                 <tr>
                                     <td style="white-space: nowrap; height: 20px;">
-                                        <span class="am-form-element">T. Builder</span><button id="builder-toggle" class="btn ${builderSettings.enabled ? 'btn-confirm-yes' : ''}">$${buttonToggle(builderSettings.enabled)}</button>
+                                        <span class="am-form-element">T. Builder</span><button id="builder-toggle" class="btn ${builderSettings.enabled ? 'btn-confirm-yes' : ''}">${buttonToggle(builderSettings.enabled)}</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap; height: 20px;">
-                                        <span class="am-form-element">T. Attack</span><button id="builder-toggle" class="btn ${attackSettings.enabled ? 'btn-confirm-yes' : ''}">$${buttonToggle(attackSettings.enabled)}</button>
+                                        <span class="am-form-element">T. Attack</span><button id="builder-toggle" class="btn ${attackSettings.enabled ? 'btn-confirm-yes' : ''}">${buttonToggle(attackSettings.enabled)}</button>
                                     </td>
                                 </tr>  
                                 <tr>

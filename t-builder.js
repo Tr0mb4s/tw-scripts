@@ -123,12 +123,12 @@ window.TUtils.Builder = window.TUtils.Builder || {}; // Ensure window.TUtils.Bui
         const utilsUI = utilsHTML();
 
         if (isOverview) {
-            $("#rightcolumn").prepend(builderUI)
+            $("#rightcolumn").prepend(utilsUI)
             builderToggler();
         }
 
         if (isMain) {
-            $("#building_wrapper").prepend(utilsUI);
+            $("#building_wrapper").prepend(builderUI);
             builderToggler();
         }
 
