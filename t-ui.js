@@ -620,17 +620,16 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
                     </h4>
                     <div class="widget_content" style="display: block;" bis_skin_checked="1">
                     <form method="post">
-                    <table width="100%">
-                        <tbody>
-                            <tr>
-                                <td style="white-space: nowrap; height: 20px;">
-                                    <button id="builder-toggle" class="btn ${builderSettings.enabled ? 'btn-confirm-yes' : ''}">${builderSettings.enabled ? '🛑 Stop' : '▶️ Start'}</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    
-                    </table>
-
+                        <table width="100%">
+                            <tbody>
+                                <tr>
+                                    <td style="white-space: nowrap; height: 20px;">
+                                        <button id="builder-toggle" class="btn ${builderSettings.enabled ? 'btn-confirm-yes' : ''}">${builderSettings.enabled ? '🛑 Stop' : '▶️ Start'}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
                     <script>
                         VillageOverview.registerAMWidgetEvents();
                     </script></div>
