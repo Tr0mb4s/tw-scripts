@@ -73,6 +73,7 @@ window.TUtils.Builder = window.TUtils.Builder || {}; // Ensure window.TUtils.Bui
     const {
         configureUI,
         builderHTML,
+        utilsHTML,
         buttonToggle
     } = window.TUtils.TUi;
 
@@ -119,6 +120,7 @@ window.TUtils.Builder = window.TUtils.Builder || {}; // Ensure window.TUtils.Bui
         const isOverview = location.href.includes("screen=overview");
         const isMain = location.href.includes("screen=main");
         const builderUI = builderHTML();
+        const utilsUI = utilsHTML();
 
         if (isOverview) {
             $("#rightcolumn").prepend(builderUI)
@@ -126,7 +128,7 @@ window.TUtils.Builder = window.TUtils.Builder || {}; // Ensure window.TUtils.Bui
         }
 
         if (isMain) {
-            $("#building_wrapper").prepend(builderUI);
+            $("#building_wrapper").prepend(utilsUI);
             builderToggler();
         }
 

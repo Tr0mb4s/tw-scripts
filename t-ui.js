@@ -632,6 +632,41 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
                 </div>`
     }
 
+    
+    function utilsHTML() {
+        let tempSettings = getSettings;
+        let attackSettings = tempSettings.attackSettings;
+        let builderSettings = tempSettings.builderSettings;
+        let recruiterSettings = tempSettings.recruiterSettings;
+
+        return `<div id="show_tutils_settings" class="vis moveable widget " bis_skin_checked="1">
+                    <h4 class="head with-button ui-sortable-handle">
+                        <img class="widget-button" onclick="return VillageOverview.toggleWidget( 'show_tutils_settings', this );" src="graphic/minus.png">		T. Builder
+                    </h4>
+                    <div class="widget_content" style="display: block;" bis_skin_checked="1">
+                        <table width="100%">
+                            <tbody>
+                                <tr>
+                                    <td style="white-space: nowrap; height: 20px;">
+                                        <span class="am-form-element">T. Builder</span><button id="builder-toggle" class="btn ${builderSettings.enabled ? 'btn-confirm-yes' : ''}">$${buttonToggle(builderSettings.enabled)}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap; height: 20px;">
+                                        <span class="am-form-element">T. Attack</span><button id="builder-toggle" class="btn ${attackSettings.enabled ? 'btn-confirm-yes' : ''}">$${buttonToggle(attackSettings.enabled)}</button>
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td style="white-space: nowrap; height: 20px;">
+                                        <span class="am-form-element">T. Recruiter</span><button id="builder-toggle" class="btn ${recruiterSettings.enabled ? 'btn-confirm-yes' : ''}">${buttonToggle(recruiterSettings.enabled)}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>`
+    }
+
     function configureButtons() {
         // Captcha Buttons
         $('#resetFormButton').on('click', () => {
@@ -841,6 +876,7 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
 
     window.TUtils.TUi = {
         configureUI,
+        utilsHTML,
         builderHTML,
         buttonToggle,
         attackToggler
