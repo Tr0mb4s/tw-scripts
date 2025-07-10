@@ -634,7 +634,7 @@ window.TUtils.TUi = window.TUtils.TUi || {}; // Ensure window.TUtils.TUi is an o
 
     
     function utilsHTML() {
-        let tempSettings = getSettings;
+        let tempSettings = getSettings();
         let attackSettings = tempSettings.attackSettings;
         let builderSettings = tempSettings.builderSettings;
         let recruiterSettings = tempSettings.recruiterSettings;
